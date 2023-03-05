@@ -4,7 +4,7 @@ const allCharacters = []
 
 const showcase$$ = document.querySelector('.showcase')
 const inputSearch$$ = document.querySelector('.search__input')
-
+let currentModal = null;
 
 
 
@@ -22,31 +22,56 @@ const filterCharacters = () => {
 
 
 const createModal = (character) => {
-    console.log(character.name)
+   
     const modal$$ = document.createElement('div')
     const modalImage$$ = document.createElement('img')
     const modalContainer$$ = document.createElement('div')
     const closeButton$$ = document.createElement('span')
     const modalName$$ = document.createElement('h2')
+    const species$$ = document.createElement('p')
+    const status$$ = document.createElement('p')
+    const gender$$ = document.createElement('p')
+    const overlay$$ = document.createElement('div')
 
         modal$$.classList.add('modal')
         modalImage$$.classList.add('modal__img')
-        modalContainer$$.classList.add('modalContainer')
         closeButton$$.classList.add('modal__close')
+        modalContainer$$.classList.add('modalContainer')
         modalName$$.classList.add('modalContainer__h2')
+        species$$.classList.add('modalContainer__p')
+        status$$.classList.add('modalContainer__p')
+        gender$$.classList.add('modalContainer__p')
+        overlay$$.classList.add('overlay')
 
             closeButton$$.textContent = 'x'
             modalName$$.textContent = character.name
+            modalImage$$.src = character.image
+            species$$.textContent = character.species;
+            status$$.textContent = character.status;
+            gender$$.textContent = character.gender
 
+                document.body.appendChild(overlay$$)
                 document.body.appendChild(modal$$)
                 modal$$.append(modalImage$$,modalContainer$$,closeButton$$)
-                modalContainer$$.append(modalName$$)
+                modalContainer$$.append(modalName$$,species$$,status$$,gender$$)
 
         closeButton$$.addEventListener('click', () => {
             modal$$.remove()
+            overlay$$.remove()
+            currentModal = null;
         })
+        currentModal = modal$$
+        return modal$$
 
+};
 
+const openModal = (character) => {
+    if (currentModal) {
+        currentModal.querySelector('.modal').remove();
+        currentModal = null;
+    }
+    const modal$$ = createModal(character);
+    currentModal = modal$$
 }
 
 
@@ -58,9 +83,6 @@ const showCharacters = (allCharacters) => {
         // console.log(character)
 
         let name = character.name;
-        let species = character.species;
-        let gender = character.gender;
-        let status = character.alive;
         let id = character.id;
         let image = character.image;
 
@@ -69,25 +91,19 @@ const showCharacters = (allCharacters) => {
             const detailsCard$$ = document.createElement('div')
             const name$$ = document.createElement('h3')
             const id$$ = document.createElement('h4')
-            const species$$ = document.createElement('p')
-            const status$$ = document.createElement('p')
-            const gender$$ = document.createElement('p')
+            
 
                 card$$.classList.add('card')
                 image$$.classList.add('card__img')
                 detailsCard$$.classList.add('cardDetails')
                 name$$.classList.add('card__h3')
                 id$$.classList.add('card__h4')
-                species$$.classList.add('card__p')
-                status$$.classList.add('card__p')
-                gender$$.classList.add('card__p')
+               
 
                     name$$.textContent = name
                     id$$.textContent = ('#00')+id
                     image$$.src = image;
-                    species$$.textContent = species;
-                    status$$.textContent = status;
-                    gender$$.textContent = gender
+                    
     
                         showcase$$.appendChild(card$$)
                         card$$.append(image$$,detailsCard$$)
@@ -95,13 +111,20 @@ const showCharacters = (allCharacters) => {
         
 
             card$$.addEventListener('click', () => {
-                createModal({
-                    name: character.name
-                })
+              
+                if(currentModal) {
+                    currentModal.querySelector('.modalContainer__h2').textContent = name;
+                } else {
+                    const modal$$ = createModal(character);
+                    modal$$.querySelector('.modalContainer__h2').textContent = name;
+                }
+
+                // createModal({
+                //     name: character.name
+                // })
+
             })
     }
-
-
 }
 
 
@@ -117,7 +140,7 @@ const getAllCharacters = async () => {
         showCharacters(allCharacters)
 
     } catch (error) {
-        console.log('No se puede acceder a la base de Datos')
+        console.log('No se puede acceder a los datos')
     }
 }
 

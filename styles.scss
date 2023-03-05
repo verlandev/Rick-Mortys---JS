@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mynerve&display=swap");
 
+
+$hoverColor: #cf7f09;
+$modalColor:#3c3e44;
+
 @mixin flex($direction, $justify, $align, $wrap) {
   flex-direction: $direction;
   justify-content: $justify;
@@ -91,13 +95,17 @@ body {
     &__img {
       height: 250px;
       border-radius: 20px;
+      -webkit-box-shadow: -2px 6px 22px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: -2px 6px 22px 0px rgba(0,0,0,0.75);
+      box-shadow: -2px 6px 22px 0px rgba(0,0,0,0.75);
+
     }
 
     .cardDetails {
       display: flex;
       @include flex(column, center, center, wrap);
       gap: 0.4em;
-      background-color: rgba(0, 0, 0, 0.623);
+      background-color: rgba(0, 0, 0, 0.758);
       width: 100%;
       position: absolute;
       bottom: 0;
@@ -112,11 +120,59 @@ body {
 }
 
 .modal{
-    border: solid 1px green; 
-    height: 300px;
+    background-color: $modalColor;
+    -webkit-box-shadow: -2px 6px 22px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 6px 22px 0px rgba(0,0,0,0.75);
+    box-shadow: -2px 6px 22px 0px rgba(0,0,0,0.75);
+    height: 500px;
     width: 50%;
     position: fixed;
     top: 20%;
     left: 25%;
-    z-index: 99;
+    z-index: 999;
+    color: whitesmoke;
+    border-radius: 50px;
+    display: flex;
+    @include flex(row,center,center,wrap);
+    gap: 2em;
+
+
+    
+
+    &__img{
+      width: 200px;
+      border-radius: 20px;
+    }
+
+    &__close{
+      cursor: pointer;
+      color: whitesmoke;
+      position: absolute;
+      top: 10px;
+      right: 30px;
+      font-size: 32px;
+    }
+}
+
+.modalContainer{
+  border: solid 1px red; 
+  height: 200px;
+
+  &__h2{
+    color: $hoverColor;
+    font-size: 32px;
+
+  }
+
+}
+
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.73);
+
 }

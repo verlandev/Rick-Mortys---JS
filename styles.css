@@ -88,6 +88,7 @@ body {
 .showcase .card__img {
   height: 250px;
   border-radius: 20px;
+  box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
 }
 .showcase .card .cardDetails {
   display: flex;
@@ -96,7 +97,7 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 0.4em;
-  background-color: rgba(0, 0, 0, 0.623);
+  background-color: rgba(0, 0, 0, 0.758);
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -109,11 +110,51 @@ body {
 }
 
 .modal {
-  border: solid 1px green;
-  height: 300px;
+  background-color: #3c3e44;
+  box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
+  height: 500px;
   width: 50%;
   position: fixed;
   top: 20%;
   left: 25%;
-  z-index: 99;
+  z-index: 999;
+  color: whitesmoke;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+.modal__img {
+  width: 200px;
+  border-radius: 20px;
+}
+.modal__close {
+  cursor: pointer;
+  color: whitesmoke;
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  font-size: 32px;
+}
+
+.modalContainer {
+  border: solid 1px red;
+  height: 200px;
+}
+.modalContainer__h2 {
+  color: #cf7f09;
+  font-size: 32px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.73);
 }/*# sourceMappingURL=styles.css.map */
