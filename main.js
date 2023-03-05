@@ -28,9 +28,11 @@ const createModal = (character) => {
     const modalContainer$$ = document.createElement('div')
     const closeButton$$ = document.createElement('span')
     const modalName$$ = document.createElement('h2')
+    const modalId$$ = document.createElement('h2')
     const species$$ = document.createElement('p')
     const status$$ = document.createElement('p')
     const gender$$ = document.createElement('p')
+    // const episode$$ = document.createElement('p')
     const overlay$$ = document.createElement('div')
 
         modal$$.classList.add('modal')
@@ -38,22 +40,26 @@ const createModal = (character) => {
         closeButton$$.classList.add('modal__close')
         modalContainer$$.classList.add('modalContainer')
         modalName$$.classList.add('modalContainer__h2')
+        modalId$$.classList.add('modalContainer__h2--id')
         species$$.classList.add('modalContainer__p')
         status$$.classList.add('modalContainer__p')
         gender$$.classList.add('modalContainer__p')
+        // episode$$.classList.add('modalContainer__p--episode')
         overlay$$.classList.add('overlay')
 
             closeButton$$.textContent = 'x'
             modalName$$.textContent = character.name
+            modalId$$.textContent = ('#00') + character.id
             modalImage$$.src = character.image
-            species$$.textContent = character.species;
-            status$$.textContent = character.status;
-            gender$$.textContent = character.gender
+            species$$.innerHTML = (`<strong>Specie</strong>: `) + character.species;
+            status$$.innerHTML = (`<strong>Status</strong>: `) + character.status;
+            gender$$.innerHTML = (`<strong>Gender</strong>: `) + character.gender
+            // episode$$.innerHTML = (`First appearance in: <br>`) + character.episode
 
                 document.body.appendChild(overlay$$)
                 document.body.appendChild(modal$$)
                 modal$$.append(modalImage$$,modalContainer$$,closeButton$$)
-                modalContainer$$.append(modalName$$,species$$,status$$,gender$$)
+                modalContainer$$.append(modalName$$, modalId$$, species$$,status$$,gender$$)
 
         closeButton$$.addEventListener('click', () => {
             modal$$.remove()
@@ -83,31 +89,28 @@ const showCharacters = (allCharacters) => {
         // console.log(character)
 
         let name = character.name;
-        let id = character.id;
         let image = character.image;
 
             const card$$ = document.createElement('div')
             const image$$ = document.createElement('img')
             const detailsCard$$ = document.createElement('div')
             const name$$ = document.createElement('h3')
-            const id$$ = document.createElement('h4')
             
 
                 card$$.classList.add('card')
                 image$$.classList.add('card__img')
                 detailsCard$$.classList.add('cardDetails')
                 name$$.classList.add('card__h3')
-                id$$.classList.add('card__h4')
+                
                
 
                     name$$.textContent = name
-                    id$$.textContent = ('#00')+id
                     image$$.src = image;
                     
     
                         showcase$$.appendChild(card$$)
                         card$$.append(image$$,detailsCard$$)
-                        detailsCard$$.append(name$$,id$$)
+                        detailsCard$$.appendChild(name$$)
         
 
             card$$.addEventListener('click', () => {

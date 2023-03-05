@@ -46,8 +46,12 @@ body {
   text-align: center;
   font-size: 16px;
   display: inline-block;
-  caret-color: whitesmoke;
+  caret-color: rgb(141, 141, 141);
   color: rgb(141, 141, 141);
+}
+.search__input::-webkit-search-cancel-button {
+  filter: invert(1);
+  cursor: pointer;
 }
 .search__input::before {
   content: "";
@@ -125,28 +129,42 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 2em;
+  gap: 3em;
 }
 .modal__img {
-  width: 200px;
+  width: 300px;
   border-radius: 20px;
 }
 .modal__close {
   cursor: pointer;
   color: whitesmoke;
   position: absolute;
-  top: 10px;
-  right: 30px;
+  top: 15px;
+  right: 40px;
   font-size: 32px;
+  transition: 0.3s;
+}
+.modal__close:hover {
+  color: #cf7f09;
+  transition: 0.3s;
 }
 
 .modalContainer {
-  border: solid 1px red;
   height: 200px;
+  width: 50%;
 }
 .modalContainer__h2 {
   color: #cf7f09;
   font-size: 32px;
+  font-weight: 900;
+}
+.modalContainer__h2--id {
+  font-weight: 700;
+  margin-bottom: 2em;
+}
+.modalContainer__p {
+  margin-bottom: 1em;
+  word-spacing: 5px;
 }
 
 .overlay {

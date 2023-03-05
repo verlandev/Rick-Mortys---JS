@@ -57,8 +57,13 @@ body {
     text-align: center;
     font-size: 16px;
     display: inline-block;
-    caret-color: whitesmoke;
+    caret-color:  rgb(141, 141, 141);
     color: rgb(141, 141, 141);
+  }
+
+  &__input::-webkit-search-cancel-button{
+    filter: invert(1);
+    cursor: pointer;
   }
 
   &__input::before {
@@ -134,13 +139,13 @@ body {
     border-radius: 50px;
     display: flex;
     @include flex(row,center,center,wrap);
-    gap: 2em;
+    gap: 3em;
 
 
     
 
     &__img{
-      width: 200px;
+      width: 300px;
       border-radius: 20px;
     }
 
@@ -148,20 +153,36 @@ body {
       cursor: pointer;
       color: whitesmoke;
       position: absolute;
-      top: 10px;
-      right: 30px;
+      top: 15px;
+      right: 40px;
       font-size: 32px;
+      transition: 0.3s;
+
+      &:hover{
+        color: $hoverColor;
+        transition: 0.3s;
+      }
     }
 }
 
 .modalContainer{
-  border: solid 1px red; 
   height: 200px;
+  width: 50%;
 
   &__h2{
     color: $hoverColor;
     font-size: 32px;
+    font-weight: 900;
 
+    &--id{
+      font-weight: 700;
+      margin-bottom: 2em;
+    }
+  }
+
+  &__p{
+    margin-bottom: 1em;
+    word-spacing: 5px;
   }
 
 }
