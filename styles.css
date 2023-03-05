@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mynerve&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#root,
+html,
+body {
+  font-family: "Montserrat";
+  background-color: #363c41;
+}
+
+.title {
+  text-align: center;
+  margin-top: 2em;
+}
+.title__h1 {
+  color: whitesmoke;
+  font-size: 3em;
+}
+.title__img {
+  width: 100px;
+  margin-bottom: 2em;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2em;
+  gap: 1em;
+  color: whitesmoke;
+  position: relative;
+}
+.search__input {
+  width: 60%;
+  border: none;
+  border-bottom: 1px solid rgb(141, 141, 141);
+  outline: none;
+  background-color: transparent;
+  padding: 0.5em;
+  text-align: center;
+  font-size: 16px;
+  display: inline-block;
+  caret-color: whitesmoke;
+  color: rgb(141, 141, 141);
+}
+.search__input::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translate(-50%);
+  width: 15px;
+  height: 15px;
+  background-image: url("./assets/lupa.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 999;
+}
+
+.showcase {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2em;
+  margin-top: 5em;
+  width: 90%;
+  margin: auto;
+  margin-top: 5em;
+  margin-bottom: 5em;
+}
+.showcase .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  margin: auto;
+}
+.showcase .card__img {
+  height: 250px;
+  border-radius: 20px;
+}
+.showcase .card .cardDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  background-color: rgba(0, 0, 0, 0.623);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  color: whitesmoke;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  text-align: center;
+}
+
+.modal {
+  border: solid 1px green;
+  height: 300px;
+  width: 50%;
+  position: fixed;
+  top: 20%;
+  left: 25%;
+  z-index: 99;
+}/*# sourceMappingURL=styles.css.map */
