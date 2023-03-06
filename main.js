@@ -1,7 +1,10 @@
-const baseURL = 'https://rickandmortyapi.com/api/character'
+const charactersURL = 'https://rickandmortyapi.com/api/character'
 const allCharacters = []
-// console.log(allCharacters) // funciona
-
+const episodesURL ='https://rickandmortyapi.com/api/episode'
+const allEpisodes = []
+console.log(allCharacters) // funciona
+console.log(allEpisodes) // funciona
+ 
 const showcase$$ = document.querySelector('.showcase')
 const inputSearch$$ = document.querySelector('.search__input')
 let currentModal = null;
@@ -10,7 +13,7 @@ let currentModal = null;
 
 const filterCharacters = () => {
     const charactersFiltered = allCharacters.filter((character) =>{
-        console.log(character.name) // Ojo, que el console log solo va a aparecer cuando se empiece a teclear algo
+        // console.log(character.name) // Ojo, que el console log solo va a aparecer cuando se empiece a teclear algo
         return character.name
         .toLowerCase()
         .includes(inputSearch$$.value.toLowerCase())
@@ -22,7 +25,9 @@ const filterCharacters = () => {
 
 
 const createModal = (character) => {
+  
    
+
     const modal$$ = document.createElement('div')
     const modalImage$$ = document.createElement('img')
     const modalContainer$$ = document.createElement('div')
@@ -32,6 +37,7 @@ const createModal = (character) => {
     const species$$ = document.createElement('p')
     const status$$ = document.createElement('p')
     const gender$$ = document.createElement('p')
+    const location$$ = document.createElement('p')
     // const episode$$ = document.createElement('p')
     const overlay$$ = document.createElement('div')
 
@@ -44,6 +50,7 @@ const createModal = (character) => {
         species$$.classList.add('modalContainer__p')
         status$$.classList.add('modalContainer__p')
         gender$$.classList.add('modalContainer__p')
+        location$$.classList.add('modalContainer__p--location')
         // episode$$.classList.add('modalContainer__p--episode')
         overlay$$.classList.add('overlay')
 
@@ -54,12 +61,13 @@ const createModal = (character) => {
             species$$.innerHTML = (`<strong>Specie</strong>: `) + character.species;
             status$$.innerHTML = (`<strong>Status</strong>: `) + character.status;
             gender$$.innerHTML = (`<strong>Gender</strong>: `) + character.gender
-            // episode$$.innerHTML = (`First appearance in: <br>`) + character.episode
+            location$$.innerHTML = (`<strong>Last known location</strong>: <br>`) + character.location.name
+            // episode$$.innerHTML = (`<strong>First seen in chapter</strong>: <br>`) + allEpisodes.name
 
                 document.body.appendChild(overlay$$)
                 document.body.appendChild(modal$$)
                 modal$$.append(modalImage$$,modalContainer$$,closeButton$$)
-                modalContainer$$.append(modalName$$, modalId$$, species$$,status$$,gender$$)
+                modalContainer$$.append(modalName$$, modalId$$, species$$,status$$,gender$$,location$$)
 
         closeButton$$.addEventListener('click', () => {
             modal$$.remove()
@@ -86,7 +94,6 @@ const showCharacters = (allCharacters) => {
     showcase$$.innerHTML ='';
 
     for (const character of allCharacters) {
-        // console.log(character)
 
         let name = character.name;
         let image = character.image;
@@ -101,9 +108,8 @@ const showCharacters = (allCharacters) => {
                 image$$.classList.add('card__img')
                 detailsCard$$.classList.add('cardDetails')
                 name$$.classList.add('card__h3')
+    
                 
-               
-
                     name$$.textContent = name
                     image$$.src = image;
                     
@@ -121,11 +127,6 @@ const showCharacters = (allCharacters) => {
                     const modal$$ = createModal(character);
                     modal$$.querySelector('.modalContainer__h2').textContent = name;
                 }
-
-                // createModal({
-                //     name: character.name
-                // })
-
             })
     }
 }
@@ -134,7 +135,7 @@ const showCharacters = (allCharacters) => {
 
 const getAllCharacters = async () => {
     try{
-        const getInfo = await fetch (baseURL)
+        const getInfo = await fetch (charactersURL)
         const translatedInfo = await getInfo.json()
         for (const detail of translatedInfo.results) {
             allCharacters.push(detail)
@@ -148,4 +149,25 @@ const getAllCharacters = async () => {
 }
 
 
+const getAllEpisodes = async() => {
+   try {
+
+    const getEpisodes = await fetch (episodesURL)
+    const translatedEpisodes = await getEpisodes.json()
+    // console.log(translatedEpisodes.results)
+    for (const episodesInfo of translatedEpisodes.results) {
+        // console.log(episodesInfo.name)
+        allEpisodes.push(episodesInfo.name)
+        
+    }
+    
+    
+   } catch (error) {
+    console.log('No es posible acceder a los episodios')
+    
+   }
+}
+
+
 getAllCharacters()
+getAllEpisodes()

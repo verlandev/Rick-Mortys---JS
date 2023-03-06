@@ -111,6 +111,7 @@ body {
   padding-top: 1em;
   padding-bottom: 1em;
   text-align: center;
+  cursor: default;
 }
 
 .modal {
@@ -134,6 +135,7 @@ body {
 .modal__img {
   width: 300px;
   border-radius: 20px;
+  box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
 }
 .modal__close {
   cursor: pointer;
@@ -150,7 +152,6 @@ body {
 }
 
 .modalContainer {
-  height: 200px;
   width: 50%;
 }
 .modalContainer__h2 {
