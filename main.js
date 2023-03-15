@@ -1,9 +1,7 @@
-const charactersURL = 'https://rickandmortyapi.com/api/character'
-const allCharacters = []
+const charactersURL = 'https://rickandmortyapi.com/api/character/'
+let allCharacters = []
 const episodesURL ='https://rickandmortyapi.com/api/episode'
 const allEpisodes = []
-console.log(allCharacters) // funciona
-console.log(allEpisodes) // funciona
  
 const showcase$$ = document.querySelector('.showcase')
 const inputSearch$$ = document.querySelector('.search__input')
@@ -90,11 +88,10 @@ const openModal = (character) => {
 
 
 const showCharacters = (allCharacters) => {
+
+    showcase$$.innerHTML = "";
     
-    showcase$$.innerHTML ='';
-
     for (const character of allCharacters) {
-
         let name = character.name;
         let image = character.image;
 
@@ -131,43 +128,91 @@ const showCharacters = (allCharacters) => {
     }
 }
 
+let currentPage = 1;
+let lastPage;
 
+const previousButton$$ = document.querySelector('.previousButton')
+const nextButton$$ = document.querySelector('.nextButton')
+const page$$ = document.querySelector('.page')
 
-const getAllCharacters = async () => {
+previousButton$$.addEventListener('click', () => {
+    
+    if(currentPage > 1){
+        currentPage -= 1;
+        page$$.textContent = currentPage 
+        getAllCharacters(currentPage)
+    } 
+
+    if(currentPage === 1 ){
+        previousButton$$.classList.add('nobutton')
+    } else {
+        previousButton$$.classList.remove('nobutton')
+    }
+})
+
+nextButton$$.addEventListener('click', () => {
+    
+    if(currentPage <= lastPage){
+        currentPage += 1;
+        page$$.textContent = currentPage 
+        getAllCharacters(currentPage)
+    } if (currentPage === lastPage){
+        nextButton$$.classList.add('nobutton')
+    } else {
+        nextButton$$.classList.remove('nobutton')
+        previousButton$$.classList.remove('nobutton')
+    }
+})
+
+const getAllCharacters = async (page) => {
     try{
-        const getInfo = await fetch (charactersURL)
+        const getInfo = await fetch (charactersURL + `?page=${page}`)
         const translatedInfo = await getInfo.json()
-        for (const detail of translatedInfo.results) {
+        lastPage = (translatedInfo.info.pages)
+        // console.log(lastPage)
+        console.log(translatedInfo.results)
+        allCharacters = []
+            for (const detail of translatedInfo.results) {
+            console.log(detail)
             allCharacters.push(detail)
-        }
-
+            }
+        
         showCharacters(allCharacters)
 
+        
+        
     } catch (error) {
         console.log('No se puede acceder a los datos')
     }
 }
 
+getAllCharacters(currentPage)
 
-const getAllEpisodes = async() => {
-   try {
 
-    const getEpisodes = await fetch (episodesURL)
-    const translatedEpisodes = await getEpisodes.json()
-    // console.log(translatedEpisodes.results)
-    for (const episodesInfo of translatedEpisodes.results) {
-        // console.log(episodesInfo.name)
-        allEpisodes.push(episodesInfo.name)
+
+// const getAllEpisodes = async() => {
+//    try {
+
+//     const getEpisodes = await fetch (episodesURL)
+//     const translatedEpisodes = await getEpisodes.json()
+//     // console.log(translatedEpisodes.results)
+//     for (const episodesInfo of translatedEpisodes.results) {
+//         // console.log(episodesInfo.name)
+//         allEpisodes.push(episodesInfo.name)
         
-    }
+//     }
     
     
-   } catch (error) {
-    console.log('No es posible acceder a los episodios')
+//    } catch (error) {
+//     console.log('No es posible acceder a los episodios')
     
-   }
-}
+//    }
+// }
+
+// getAllEpisodes()
 
 
-getAllCharacters()
-getAllEpisodes()
+
+
+
+

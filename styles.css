@@ -15,6 +15,7 @@ body {
 .title {
   text-align: center;
   margin-top: 2em;
+  cursor: default;
 }
 .title__h1 {
   color: whitesmoke;
@@ -66,6 +67,45 @@ body {
   background-position: center;
   z-index: 999;
 }
+.search .pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;
+  position: relative;
+  width: 20%;
+}
+.search .pagination__h3 {
+  font-size: 32px;
+}
+.search .pagination__button {
+  width: 100px;
+  background-color: #cf7f09;
+  border: solid 1px #cf7f09;
+  padding: 0.5em;
+  border-radius: 5px;
+  color: whitesmoke;
+  font-weight: 700;
+  cursor: pointer;
+  word-spacing: 5px;
+  transition: 0.5s;
+  margin: auto;
+}
+.search .pagination__button:hover {
+  background-color: transparent;
+  color: #cf7f09;
+  border: solid 1px #cf7f09;
+  transition: 0.5s;
+}
+.search .pagination .previousButton {
+  position: absolute;
+  left: 0;
+}
+.search .pagination .nextButton {
+  position: absolute;
+  right: 0;
+}
 
 .showcase {
   display: flex;
@@ -88,6 +128,7 @@ body {
   flex-wrap: wrap;
   position: relative;
   margin: auto;
+  cursor: pointer;
 }
 .showcase .card__img {
   height: 250px;
@@ -112,6 +153,10 @@ body {
   padding-bottom: 1em;
   text-align: center;
   cursor: default;
+}
+
+.nobutton {
+  display: none;
 }
 
 .modal {

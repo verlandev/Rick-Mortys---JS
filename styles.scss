@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mynerve&display=swap");
 
-
 $hoverColor: #cf7f09;
-$modalColor:#3c3e44;
+$modalColor: #3c3e44;
 
 @mixin flex($direction, $justify, $align, $wrap) {
   flex-direction: $direction;
@@ -27,6 +26,7 @@ body {
 .title {
   text-align: center;
   margin-top: 2em;
+  cursor: default;
 
   &__h1 {
     color: whitesmoke;
@@ -57,11 +57,11 @@ body {
     text-align: center;
     font-size: 16px;
     display: inline-block;
-    caret-color:  rgb(141, 141, 141);
+    caret-color: rgb(141, 141, 141);
     color: rgb(141, 141, 141);
   }
 
-  &__input::-webkit-search-cancel-button{
+  &__input::-webkit-search-cancel-button {
     filter: invert(1);
     cursor: pointer;
   }
@@ -78,6 +78,50 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     z-index: 999;
+  }
+
+  .pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+    position: relative;
+    width: 20%;
+
+    &__h3 {
+      font-size: 32px;
+    }
+
+    &__button {
+      width: 100px;
+      background-color: $hoverColor;
+      border: solid 1px $hoverColor;
+      padding: 0.5em;
+      border-radius: 5px;
+      color: whitesmoke;
+      font-weight: 700;
+      cursor: pointer;
+      word-spacing: 5px;
+      transition: 0.5s;
+      margin: auto;
+
+      &:hover {
+        background-color: transparent;
+        color: $hoverColor;
+        border: solid 1px $hoverColor;
+        transition: 0.5s;
+      }
+    }
+
+    .previousButton {
+      position: absolute;
+      left: 0;
+    }
+    .nextButton {
+      position: absolute;
+      right: 0;
+    }
   }
 }
 
@@ -96,14 +140,14 @@ body {
     @include flex(column, space-between, center, wrap);
     position: relative;
     margin: auto;
+    cursor: pointer;
 
     &__img {
       height: 250px;
       border-radius: 20px;
-      -webkit-box-shadow: -2px 6px 22px 0px rgba(0,0,0,0.75);
-      -moz-box-shadow: -2px 6px 22px 0px rgba(0,0,0,0.75);
-      box-shadow: -2px 6px 22px 0px rgba(0,0,0,0.75);
-
+      -webkit-box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
     }
 
     .cardDetails {
@@ -125,72 +169,72 @@ body {
   }
 }
 
-.modal{
-    background-color: $modalColor;
-    -webkit-box-shadow: -2px 6px 22px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -2px 6px 22px 0px rgba(0,0,0,0.75);
-    box-shadow: -2px 6px 22px 0px rgba(0,0,0,0.75);
-    height: 500px;
-    width: 50%;
-    position: fixed;
-    top: 20%;
-    left: 25%;
-    z-index: 999;
-    color: whitesmoke;
-    border-radius: 50px;
-    display: flex;
-    @include flex(row,center,center,wrap);
-    gap: 3em;
-
-
-    
-
-    &__img{
-      width: 300px;
-      border-radius: 20px;
-      -webkit-box-shadow: -2px 6px 22px 0px rgba(0,0,0,0.75);
-      -moz-box-shadow: -2px 6px 22px 0px rgba(0,0,0,0.75);
-      box-shadow: -2px 6px 22px 0px rgba(0,0,0,0.75);
-    }
-
-    &__close{
-      cursor: pointer;
-      color: whitesmoke;
-      position: absolute;
-      top: 15px;
-      right: 40px;
-      font-size: 32px;
-      transition: 0.3s;
-
-      &:hover{
-        color: $hoverColor;
-        transition: 0.3s;
-      }
-    }
+.nobutton {
+  display: none;
 }
 
-.modalContainer{
+.modal {
+  background-color: $modalColor;
+  -webkit-box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
+  height: 500px;
+  width: 50%;
+  position: fixed;
+  top: 20%;
+  left: 25%;
+  z-index: 999;
+  color: whitesmoke;
+  border-radius: 50px;
+  display: flex;
+  @include flex(row, center, center, wrap);
+  gap: 3em;
+
+  &__img {
+    width: 300px;
+    border-radius: 20px;
+    -webkit-box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
+  }
+
+  &__close {
+    cursor: pointer;
+    color: whitesmoke;
+    position: absolute;
+    top: 15px;
+    right: 40px;
+    font-size: 32px;
+    transition: 0.3s;
+
+    &:hover {
+      color: $hoverColor;
+      transition: 0.3s;
+    }
+  }
+}
+
+.modalContainer {
   width: 50%;
 
-  &__h2{
+  &__h2 {
     color: $hoverColor;
     font-size: 32px;
     font-weight: 900;
 
-    &--id{
+    &--id {
       font-weight: 700;
       margin-bottom: 2em;
     }
   }
 
-  &__p{
+  &__p {
     margin-bottom: 1em;
     word-spacing: 5px;
   }
-
 }
 
-.overlay{
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -198,5 +242,4 @@ body {
   height: 100%;
   z-index: 9;
   background-color: rgba(0, 0, 0, 0.73);
-
 }
