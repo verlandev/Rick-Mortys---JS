@@ -26,199 +26,224 @@ body {
   margin-bottom: 2em;
 }
 
-.search {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 2em;
-  gap: 1em;
-  color: whitesmoke;
-  position: relative;
+@media screen and (max-width: 3000px) {
+  .search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 2em;
+    gap: 1em;
+    color: whitesmoke;
+    position: relative;
+  }
+  .search__input {
+    width: 60%;
+    border: none;
+    border-bottom: 1px solid rgb(141, 141, 141);
+    outline: none;
+    background-color: transparent;
+    padding: 0.5em;
+    text-align: center;
+    font-size: 16px;
+    display: inline-block;
+    caret-color: rgb(141, 141, 141);
+    color: rgb(141, 141, 141);
+  }
+  .search__input::-webkit-search-cancel-button {
+    filter: invert(1);
+    cursor: pointer;
+  }
+  .search .pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+    position: relative;
+    width: 30%;
+  }
+  .search .pagination__h3 {
+    font-size: 32px;
+  }
+  .search .pagination__button {
+    width: 100px;
+    background-color: #cf7f09;
+    border: solid 1px #cf7f09;
+    padding: 0.5em;
+    border-radius: 5px;
+    color: whitesmoke;
+    font-weight: 700;
+    cursor: pointer;
+    word-spacing: 5px;
+    transition: 0.5s;
+    margin: auto;
+  }
+  .search .pagination__button:hover {
+    background-color: transparent;
+    color: #cf7f09;
+    border: solid 1px #cf7f09;
+    transition: 0.5s;
+  }
+  .search .pagination .previousButton {
+    position: absolute;
+    left: 0;
+  }
+  .search .pagination .nextButton {
+    position: absolute;
+    right: 0;
+  }
+  .showcase {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2em;
+    margin-top: 5em;
+    width: 90%;
+    margin: auto;
+    margin-top: 5em;
+    margin-bottom: 5em;
+  }
+  .showcase .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    margin: auto;
+    cursor: pointer;
+  }
+  .showcase .card__img {
+    height: 250px;
+    border-radius: 20px;
+    box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
+  }
+  .showcase .card .cardDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4em;
+    background-color: rgba(0, 0, 0, 0.758);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    color: whitesmoke;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+    cursor: default;
+  }
+  .nobutton {
+    display: none;
+  }
+  .modal {
+    background-color: #3c3e44;
+    box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
+    height: 500px;
+    width: 50%;
+    position: fixed;
+    top: 20%;
+    left: 25%;
+    z-index: 999;
+    color: whitesmoke;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2em;
+  }
+  .modal__img {
+    width: 200px;
+    border-radius: 20px;
+    box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
+  }
+  .modal__close {
+    cursor: pointer;
+    color: whitesmoke;
+    position: absolute;
+    top: 15px;
+    right: 40px;
+    font-size: 32px;
+    transition: 0.3s;
+  }
+  .modal__close:hover {
+    color: #cf7f09;
+    transition: 0.3s;
+  }
+  .modalContainer {
+    width: 50%;
+  }
+  .modalContainer__h2 {
+    color: #cf7f09;
+    font-size: 32px;
+    font-weight: 900;
+  }
+  .modalContainer__h2--id {
+    font-weight: 700;
+    margin-bottom: 2em;
+  }
+  .modalContainer__p {
+    margin-bottom: 1em;
+    word-spacing: 5px;
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    background-color: rgba(0, 0, 0, 0.73);
+  }
 }
-.search__input {
-  width: 60%;
-  border: none;
-  border-bottom: 1px solid rgb(141, 141, 141);
-  outline: none;
-  background-color: transparent;
-  padding: 0.5em;
-  text-align: center;
-  font-size: 16px;
-  display: inline-block;
-  caret-color: rgb(141, 141, 141);
-  color: rgb(141, 141, 141);
+@media screen and (max-width: 900px) {
+  .search .pagination {
+    width: 50%;
+  }
+  .modal {
+    border-radius: 20px;
+    width: 90%;
+    top: 10px;
+    left: 5%;
+    gap: 1em;
+    height: 500px;
+  }
+  .modal__img {
+    width: 150px;
+    margin-top: 20px;
+  }
+  .modal__close {
+    right: 15px;
+    font-size: 22px;
+  }
 }
-.search__input::-webkit-search-cancel-button {
-  filter: invert(1);
-  cursor: pointer;
-}
-.search__input::before {
-  content: "";
-  position: absolute;
-  left: 5px;
-  top: 50%;
-  transform: translate(-50%);
-  width: 15px;
-  height: 15px;
-  background-image: url("./assets/lupa.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 999;
-}
-.search .pagination {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2em;
-  position: relative;
-  width: 20%;
-}
-.search .pagination__h3 {
-  font-size: 32px;
-}
-.search .pagination__button {
-  width: 100px;
-  background-color: #cf7f09;
-  border: solid 1px #cf7f09;
-  padding: 0.5em;
-  border-radius: 5px;
-  color: whitesmoke;
-  font-weight: 700;
-  cursor: pointer;
-  word-spacing: 5px;
-  transition: 0.5s;
-  margin: auto;
-}
-.search .pagination__button:hover {
-  background-color: transparent;
-  color: #cf7f09;
-  border: solid 1px #cf7f09;
-  transition: 0.5s;
-}
-.search .pagination .previousButton {
-  position: absolute;
-  left: 0;
-}
-.search .pagination .nextButton {
-  position: absolute;
-  right: 0;
-}
-
-.showcase {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 2em;
-  margin-top: 5em;
-  width: 90%;
-  margin: auto;
-  margin-top: 5em;
-  margin-bottom: 5em;
-}
-.showcase .card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  position: relative;
-  margin: auto;
-  cursor: pointer;
-}
-.showcase .card__img {
-  height: 250px;
-  border-radius: 20px;
-  box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
-}
-.showcase .card .cardDetails {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.4em;
-  background-color: rgba(0, 0, 0, 0.758);
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  color: whitesmoke;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  text-align: center;
-  cursor: default;
-}
-
-.nobutton {
-  display: none;
-}
-
-.modal {
-  background-color: #3c3e44;
-  box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
-  height: 500px;
-  width: 50%;
-  position: fixed;
-  top: 20%;
-  left: 25%;
-  z-index: 999;
-  color: whitesmoke;
-  border-radius: 50px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 3em;
-}
-.modal__img {
-  width: 300px;
-  border-radius: 20px;
-  box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
-}
-.modal__close {
-  cursor: pointer;
-  color: whitesmoke;
-  position: absolute;
-  top: 15px;
-  right: 40px;
-  font-size: 32px;
-  transition: 0.3s;
-}
-.modal__close:hover {
-  color: #cf7f09;
-  transition: 0.3s;
-}
-
 .modalContainer {
-  width: 50%;
+  width: 80%;
+  text-align: center;
+  border: solid 1px red;
+  padding-bottom: 2em;
 }
 .modalContainer__h2 {
-  color: #cf7f09;
-  font-size: 32px;
-  font-weight: 900;
+  font-size: 26px;
 }
 .modalContainer__h2--id {
-  font-weight: 700;
-  margin-bottom: 2em;
+  font-size: 24px;
+  margin-bottom: 1em;
 }
 .modalContainer__p {
-  margin-bottom: 1em;
-  word-spacing: 5px;
+  margin-bottom: 0.5em;
+  font-size: 14px;
 }
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9;
-  background-color: rgba(0, 0, 0, 0.73);
+.modalContainer__p--location {
+  font-size: 14px;
 }/*# sourceMappingURL=styles.css.map */

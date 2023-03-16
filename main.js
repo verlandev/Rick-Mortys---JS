@@ -1,3 +1,5 @@
+console.log(screen.width)
+
 const charactersURL = 'https://rickandmortyapi.com/api/character/'
 let allCharacters = []
 const episodesURL ='https://rickandmortyapi.com/api/episode'
@@ -142,12 +144,13 @@ previousButton$$.addEventListener('click', () => {
         page$$.textContent = currentPage 
         getAllCharacters(currentPage)
     } 
-
+    
     if(currentPage === 1 ){
         previousButton$$.classList.add('nobutton')
     } else {
         previousButton$$.classList.remove('nobutton')
     }
+
 })
 
 nextButton$$.addEventListener('click', () => {
@@ -170,10 +173,10 @@ const getAllCharacters = async (page) => {
         const translatedInfo = await getInfo.json()
         lastPage = (translatedInfo.info.pages)
         // console.log(lastPage)
-        console.log(translatedInfo.results)
+        // console.log(translatedInfo.results)
         allCharacters = []
             for (const detail of translatedInfo.results) {
-            console.log(detail)
+            // console.log(detail)
             allCharacters.push(detail)
             }
         
@@ -188,6 +191,10 @@ const getAllCharacters = async (page) => {
 
 getAllCharacters(currentPage)
 
+
+window.addEventListener('load', () => {
+    previousButton$$.classList.add('nobutton')
+})
 
 
 // const getAllEpisodes = async() => {

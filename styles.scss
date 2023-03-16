@@ -39,6 +39,8 @@ body {
   }
 }
 
+@media screen and (max-width: 3000px) {
+
 .search {
   display: flex;
   @include flex(column, center, center, wrap);
@@ -66,20 +68,6 @@ body {
     cursor: pointer;
   }
 
-  &__input::before {
-    content: "";
-    position: absolute;
-    left: 5px;
-    top: 50%;
-    transform: translate(-50%);
-    width: 15px;
-    height: 15px;
-    background-image: url("./assets/lupa.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 999;
-  }
-
   .pagination {
     display: flex;
     flex-direction: row;
@@ -87,7 +75,7 @@ body {
     justify-content: center;
     margin-top: 2em;
     position: relative;
-    width: 20%;
+    width: 30%;
 
     &__h3 {
       font-size: 32px;
@@ -125,6 +113,8 @@ body {
   }
 }
 
+
+  
 .showcase {
   display: flex;
   @include flex(row, flex-start, flex-start, wrap);
@@ -188,10 +178,10 @@ body {
   border-radius: 50px;
   display: flex;
   @include flex(row, center, center, wrap);
-  gap: 3em;
+  gap: 2em;
 
   &__img {
-    width: 300px;
+    width: 200px;
     border-radius: 20px;
     -webkit-box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -2px 6px 22px 0px rgba(0, 0, 0, 0.75);
@@ -242,4 +232,57 @@ body {
   height: 100%;
   z-index: 9;
   background-color: rgba(0, 0, 0, 0.73);
+}
+}
+
+@media screen and (max-width: 900px) {
+  .search{
+  .pagination{
+    width: 50%;
+  }
+}
+
+  .modal{
+    border-radius: 20px;
+    width: 90%;
+    top: 10px;
+    left: 5%;
+    gap: 1em;
+    height: 500px;
+
+    
+    &__img{
+      width: 150px;
+      margin-top: 20px;
+    }
+
+    &__close{
+      right: 15px;
+      font-size: 22px;
+    }
+  }
+}
+
+.modalContainer{
+  width: 80%;
+  text-align: center;
+  border: solid 1px red;
+  padding-bottom: 2em;
+
+  &__h2{
+    font-size: 26px;
+
+    &--id{
+      font-size: 24px;
+      margin-bottom: 1em;
+    }
+  }
+  &__p{
+    margin-bottom: 0.5em;
+    font-size: 14px;
+
+    &--location{
+      font-size: 14px;
+    }
+  }
 }
