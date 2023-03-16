@@ -238,14 +238,14 @@ body {
 @media screen and (max-width: 900px) {
   .search{
   .pagination{
-    width: 50%;
+    width: 60%;
   }
 }
 
   .modal{
     border-radius: 20px;
     width: 90%;
-    top: 10px;
+    top: 10%;
     left: 5%;
     gap: 1em;
     height: 500px;
@@ -266,7 +266,6 @@ body {
 .modalContainer{
   width: 80%;
   text-align: center;
-  border: solid 1px red;
   padding-bottom: 2em;
 
   &__h2{
